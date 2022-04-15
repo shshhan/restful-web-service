@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 //이번 예제에서는 실제 RDB에 연결하지 않을 예정이기 때문에 DAO와 Service를 하나로 사용하기 위한 클래스
@@ -43,6 +44,35 @@ public class UserDaoService {
         users.add(user);
 
         return user;
+    }
+
+    public User deleteById(int id){
+        Iterator<User> iterator = users.iterator();
+
+        while(iterator.hasNext()){
+            User user = iterator.next();
+            if(user.getId() == id){
+                iterator.remove();
+                return user;
+            }
+        }
+
+        return null;
+
+    }
+
+    public User updateName(User user, int id){
+        Iterator<User> iterator = users.iterator();
+
+        User one = this.findOne(id);
+
+        if(one != null){
+            one.setName(user.getName());
+            return one;
+        }
+
+        return null;
+
     }
 
 }

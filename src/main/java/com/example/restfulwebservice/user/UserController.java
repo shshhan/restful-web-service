@@ -42,4 +42,24 @@ public class UserController {
         //http status 201 반환
         //Response Headers에 key:Location, value:생성한 uri(==location)가 추가됨
     }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id){
+        User user = service.deleteById(id);
+
+        if(user == null){
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+    }
+
+    @PutMapping("/users/{id}")
+    public void updateUser(@RequestBody User user, @PathVariable int id){
+        User one = service.updateName(user, id);
+
+        if(one == null){
+            throw new UserNotFoundException(String.format("ID[%s] not found", user.getId()));
+        }
+
+    }
+
 }
