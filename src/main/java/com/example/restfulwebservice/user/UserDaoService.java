@@ -14,9 +14,9 @@ public class UserDaoService {
 
     //DB에 아래의 값이 들어가있다고 가정
     static{
-        users.add(new User(1, "Shawn", new Date()));
-        users.add(new User(2, "Jack", new Date()));
-        users.add(new User(3, "John", new Date()));
+        users.add(new User(1, "Shawn", new Date(), "pass1", "950110-1111111"));
+        users.add(new User(2, "Jack", new Date(), "pass2", "950110-2111111"));
+        users.add(new User(3, "John", new Date(), "pass3", "960110-1111111"));
     }
 
     private static int usersCount = users.size();   // 새로 ID를 부여해주기 위한 변수

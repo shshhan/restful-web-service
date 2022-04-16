@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.user;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,6 +10,8 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
+//@JsonIgnoreProperties(value={"password", "ssn"})    //value에 정의한 필드에 @JsonIgnore를 설정한 것과 같음.
+@JsonFilter("UserInfo") //임의로 filterName 정의
 public class User {
     private Integer id;
 
@@ -18,5 +21,10 @@ public class User {
     private String name;
     @Past
     private Date joinDate;
+
+//    @JsonIgnore //@JsonIgnore를 설정한 필드는 클라이언트로 해당 필드를 전달되지 않음.
+    private String password;
+//    @JsonIgnore
+    private String ssn;
 
 }

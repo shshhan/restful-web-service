@@ -16,7 +16,9 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> retrieveAllUsers() {
-        return service.findAll();
+        List<User> users = service.findAll();
+
+        return users;
     }
 
     @GetMapping("/users/{id}")
