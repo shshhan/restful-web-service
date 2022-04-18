@@ -24,10 +24,20 @@ public class UserController {
     private final UserDaoService service;
 
     @GetMapping("/users")
-    public List<User> retrieveAllUsers() {
+    public MappingJacksonValue retrieveAllUsers() {
         List<User> users = service.findAll();
 
-        return users;
+        //Filter
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("id", "name", "joinDate");
+
+        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo", filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(users);
+        mapping.setFilters(filters);
+
+        return mapping;
+//        return users;
     }
 
     @GetMapping("/users/{id}")
