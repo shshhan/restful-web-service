@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -18,7 +21,11 @@ import java.util.Date;
 @NoArgsConstructor
 //@JsonIgnoreProperties(value={"password", "ssn"})    //value에 정의한 필드에 @JsonIgnore를 설정한 것과 같음.
 @JsonFilter("UserInfo") //임의로 filterName 정의
+@Entity     //해당 클래스로 DB에 테이블 생성
 public class User {
+
+    @Id     //해당 컬럼을 key로 설정
+    @GeneratedValue //값 자동생성
     private Integer id;
 
     //validation check
