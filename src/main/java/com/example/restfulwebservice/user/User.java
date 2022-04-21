@@ -1,6 +1,5 @@
 package com.example.restfulwebservice.user;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -20,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 //@JsonIgnoreProperties(value={"password", "ssn"})    //value에 정의한 필드에 @JsonIgnore를 설정한 것과 같음.
-@JsonFilter("UserInfo") //임의로 filterName 정의
+//@JsonFilter("UserInfo") //임의로 filterName 정의
 @Entity     //해당 클래스로 DB에 테이블 생성
 public class User {
 
