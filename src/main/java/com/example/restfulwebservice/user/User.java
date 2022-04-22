@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.user;
 
+import com.example.restfulwebservice.post.Post;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -9,9 +10,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 
 @ApiModel(description = "사용자 상세 정보를 위한 도메인 객체")
@@ -42,5 +45,16 @@ public class User {
     private String password;
 //    @JsonIgnore
     private String ssn;
+
+    @OneToMany(mappedBy = "user")  //하나의 User 객체가 여러 Post 객체가 매핑
+    private List<Post> posts;
+
+    public User(int id, String name, Date date, String password, String ssn) {
+        this.id = id;
+        this.name = name;
+        this.joinDate = date;
+        this.password = password;
+        this.ssn = ssn;
+    }
 
 }

@@ -19,6 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/jpa")
 @RestController
 public class UserJpaController {
+
     private final UserRepository userRepository;
 
     @GetMapping("/users")
@@ -60,6 +61,4 @@ public class UserJpaController {
 
         return ResponseEntity.created(location).build();
     }
-
-
 }

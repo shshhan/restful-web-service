@@ -3,3 +3,7 @@
 INSERT INTO user VALUES (101, sysdate(), 'Shawn', 'pass1', '950110-1111111');
 INSERT INTO user VALUES (102, sysdate(), 'Jack', 'pass2', '950110-2111111');
 INSERT INTO user VALUES (103, sysdate(), 'John', 'pass3', '930110-1111111');
+
+INSERT INTO post VALUES (101, '1st post', 101);
+INSERT INTO post VALUES (102, '2nd post', 101);
+INSERT INTO post VALUES (103, '3rd post', 101);
